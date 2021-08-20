@@ -1,0 +1,7 @@
+{
+  "name": "CovidIonicApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

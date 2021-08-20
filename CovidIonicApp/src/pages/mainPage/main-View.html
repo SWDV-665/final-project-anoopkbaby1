@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title><div style="color:#1ba132;text-align: center;">COVID-19 Statistics</div></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-img src="/assets/imgs/TrackTrace.jpg" style="width:100%; height:100%; margin: 0 auto; max-height: 130px; max-width:310px; display:block;"></ion-img>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-justify-content-center">          
+          <h1 style="color:#ef0d89;text-align: center;">COVID-19 Dashboard</h1>
+          <h5><div>
+            <div style="text-align: justify;">Swipe down to get complete list of COVID-19 active, inactive, deaths and recover cases information from all countries.</div>
+            </div></h5>
+        </div>
+        
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="ion-justify-content-center">
+          <h4><div style="text-align: justify;">
+            <div style="text-align: center;">COVID-19 cases report as on :</div>
+            </div></h4>
+          <h4><div style="text-align: center; color:rgb(255, 102, 0);">{{yesterday|date}}</div></h4>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-searchbar placeholder="Search here" animated [(ngModel)]="term"></ion-searchbar>
+  <ion-item *ngFor="let post of posts| filter:term" text-wrap>
+    <h2> <b>Country : <span style="color:red;"> {{post.region.name}} </span></b></h2>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h5>Confirmed:</h5>
+          </ion-col>
+          <ion-col>
+            <ion-badge color="new-primary">{{post.confirmed}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+          <ion-col>
+            <h5>Active:</h5>
+          </ion-col>
+          <ion-col>
+            <ion-badge color="warning">{{post.active}}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h5>Deaths:</h5>
+          </ion-col>
+          <ion-col>
+            <ion-badge color="danger">{{post.deaths}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+          <ion-col>
+            <h5>Recovered:</h5>
+          </ion-col>
+          <ion-col>
+            <ion-badge color="secondary">{{post.recovered}}</ion-badge>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+    <button ion-fab mini (click)="covidmap()">
+      <ion-icon name="map"></ion-icon>
+    </button>
+  </ion-item>
+</ion-content>
